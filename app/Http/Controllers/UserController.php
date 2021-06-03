@@ -158,8 +158,30 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function ativarDesativar($id)
     {
-        //
+        if (! Gate::allows('admin')) {
+            abort(403);
+        }
+
+   $user = User::find($id);
+    if($user->count() > 0){
+
+        if($user->ativo == 'S'){
+       $user->ativo = 'N';
+       $msg = "desativado";
+        }else{
+       $msg = "reativado";
+       $user->ativo = 'S';
+        }
+        $user->save();
+        return redirect()->back()->withErrors('O Perfil do usuário '.$user->name.' foi '.$msg.' com sucesso');
+
+    }else{
+
+    return redirect()->back()->withErrors('Usuário não encontrado');
+
+}
+
     }
 }

@@ -9,7 +9,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-
+            @if($errors->any())
+<div class="alert alert-info" role="alert">
+ <h5>{{$errors->first()}}</h5>
+</div>
+@endif
 Lista de Usuarios
 
 <table class="table">
@@ -32,9 +36,23 @@ Lista de Usuarios
 <td>{{ $user->equipe }}</td>
 <td>{{ $user->email }}</td>
 <td>{{ $user->telefone }}</td>
-<td>{{ $user->ativo }}</td>
+@if($user->ativo=='S')
+<td><span class="material-icons" style="font-size:2em;color:rgb(30, 175, 30)">
+done
+</span></td>
+@else
+    <td><span class="material-icons" style="font-size:2em;color:rgba(107, 3, 3, 0.513)">
+dangerous
+</span></td>
+        @endif
 
-<td><a href = '/usuario/{{ $user->id }}'>Detalhar</a></td>
+
+<td><a href = '/usuario/{{ $user->id }}'><span class="material-icons" style="font-size:2em;">
+search
+</span></a>
+    <a href = '/usuario/alterarstatus/{{ $user->id }}'> <span class="material-icons" style="font-size:2em;">
+cancel
+</span></a></td>
 </tr>
 @endforeach
 

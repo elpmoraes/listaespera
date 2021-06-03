@@ -52,6 +52,14 @@ class ListaJogoController extends Controller
      if (! Gate::allows('admin')) {
             abort(403);
         }
+
+             $request->validate([
+            'descricao' => 'required|string|max:190',
+            'endereco' => 'required|string|max:190',
+            'cidade' => 'required|string|max:190',
+            'datahora' => 'required|date',
+            'maxinscritos' => ['required', 'numeric'],
+        ]);
         $inscritos = new user_list;
 
 
@@ -62,7 +70,13 @@ class ListaJogoController extends Controller
                $listaJogo->dataabertura = now();
                $listaJogo->listavisivel = 'S';
                 $listaJogo->ativo = 'S';
+
+                try{
         $listaJogo->save();
+
+                }catch (\Throwable $e){
+          //dd($e);
+        }
         $msg = "Lista Incluída com sucesso.";
 
 
@@ -71,7 +85,7 @@ $user_list = user_list::with('user')->where('id_lista', $listaJogo->id)->get();
         return view('admin.alterarLista', [
             'listaJogo' => ListaJogo::findOrFail($listaJogo->id),
                         "user_list" => $user_list,
-        ])->withErrors([$msg]);;
+        ])->withMessage([$msg]);;
     }
 
     /**
@@ -253,22 +267,40 @@ return Redirect::route('exibirLista',$idLista)->withErrors([$msg]);
     public function update(Request $request, $id)
     {
 
+
+
+
      if (! Gate::allows('admin')) {
             abort(403);
         }
+             $request->validate([
+            'descricao' => 'required|string|max:190',
+            'endereco' => 'required|string|max:190',
+            'cidade' => 'required|string|max:190',
+            'datahora' => 'required|date',
+            'maxinscritos' => ['required', 'numeric'],
+        ]);
 
         $listaJogo = ListaJogo::find($id);
+        try{
         $listaJogo->fill($request->all());
         $listaJogo->save();
+
+        }catch (\Throwable $e){
+          //dd($e);
+        }
         $user_list = user_list::with('user')->where('id_lista', $id)->get();
 
-$user_list = user_list::with('user')->where('id_lista', $id)->get();
+        $user_list = user_list::with('user')->where('id_lista', $id)->get();
 
 
         return view('admin.alterarLista', [
             'listaJogo' => ListaJogo::findOrFail($id),
                         "user_list" => $user_list,
         ]);
+
+
+
     }
 
     /**

@@ -12,21 +12,18 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
-
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
         <form action="/listajogos" method="POST">
             @csrf
             <div class="mb-3">
 Descricao <input type="text" class="form-control" required name="descricao" id="descricao">
 </div>  <div class="mb-3">
 Endereço <input type="text" class="form-control"  required name="endereco" id="endereco" >
-</div>  <div class="mb-3">
-Data do Jogo
-    <input class="date form-control"  required name="datahora" id="datahora" type="text">
-<script type="text/javascript">
-    $('.date').datepicker({
-       format: 'yyyy-mm-dd'
-     });
-     </script>
+
+
+    </div>  <div class="mb-3">
+       Data e Hora do Jogo
+<input type="datetime-local" class="form-control"  required name="datahora" id="datahora" >
 
     </div>  <div class="mb-3">
 Cidade <input type="text" class="form-control" required  name="cidade" id="cidade" >

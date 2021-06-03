@@ -9,15 +9,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
         <form action="/listajogos/{{ $listaJogo->id }}" method="POST">
             @csrf
             @method('PUT')
             <div class="mb-3">
 Descricao <input type="text" class="form-control" name="descricao" id="descricao" value="{{ $listaJogo->descricao }}">
-Data/Hora <input type="text" class="form-control" name="datahora" id="datahora" value="{{ $listaJogo->datahora }}">
+Data/Hora <input type="datetime" class="form-control" name="datahora" id="datahora" value="{{ $listaJogo->datahora }}">
 Endereço <input type="text" class="form-control"  name="endereco" id="endereco" value="{{ $listaJogo->endereco }}">
-
 Cidade <input type="text" class="form-control"  name="cidade" id="cidade" value="{{ $listaJogo->cidade }}">
 Link google maps <input type="text"  class="form-control" name="gmaps" id="gmaps" value="{{ $listaJogo->gmaps }}">
 Inscritos <input type="text"  class="form-control" disabled name="inscritos" id="inscritos" value="{{ $listaJogo->inscritos }}">

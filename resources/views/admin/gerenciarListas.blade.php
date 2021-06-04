@@ -1,5 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
+
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Lista de Jogos - Administração') }}
         </h2>
@@ -16,9 +17,9 @@
 @endif
 Lista de jogos
 
-
-<table class="table">
-  <thead>
+<div class="table-responsive">
+<table class="table table-striped table-hover">
+        <thead>
     <tr>
       <th scope="col">Descrição</th>
       <th scope="col">DataHora</th>
@@ -60,7 +61,7 @@ cancel
 
   </tbody>
 </table>
-
+</div>
 
 
                 </div>

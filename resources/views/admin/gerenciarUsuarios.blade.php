@@ -16,10 +16,10 @@
 @endif
 Lista de Usuarios
 
-<table class="table">
+<div class="table-responsive">
+<table class="table table-striped table-hover">
   <thead>
     <tr>
-  <th scope="col">#</th>
       <th scope="col">Nome</th>
       <th scope="col">Equipe</th>
       <th scope="col">Email</th>
@@ -31,7 +31,6 @@ Lista de Usuarios
   <tbody>
 @foreach ($user as $user)
 <tr>
-<td>{{ $user->id }}</td>
 <td>{{ $user->name }}</td>
 <td>{{ $user->equipe }}</td>
 <td>{{ $user->email }}</td>
@@ -59,7 +58,7 @@ cancel
 
   </tbody>
 </table>
-
+</div>
 
                 </div>
 

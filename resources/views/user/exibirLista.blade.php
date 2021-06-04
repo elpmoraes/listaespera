@@ -55,10 +55,10 @@ Código da Lista
 <a href="/removerinscricao/{{ $listaJogo->id }}/{{ Auth::user()->id }}" class="btn btn-warning col-md-3" role="button">Remover minha inscrição</a>
 
    </div>
-<table class="table">
+<div class="table-responsive">
+<table class="table table-striped table-hover">
   <thead>
     <tr>
-  <th scope="col">#</th>
       <th scope="col">Nome</th>
       <th scope="col">Equipe</th>
       <th scope="col">Data/Hora Inscrição</th>
@@ -69,7 +69,6 @@ Código da Lista
   <tbody>
 @foreach ($user_list as $user_list)
 <tr>
-<td>{{ $user_list->id }}</td>
 <td>{{ $user_list->user[0]->name }}</td>
 <td>{{ $user_list->user[0]->equipe }}</td>
 <td>{{ $user_list->datainscricao }}</td>
@@ -90,7 +89,7 @@ dangerous
   </tbody>
 </table>
 
-
+</div>
 
 
                 </div>

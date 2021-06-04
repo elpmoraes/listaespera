@@ -33,12 +33,14 @@
 
 
                 </div>
-                  <br><h3>ASSOCIAÇÃO DE AIRSOFT DA REGIAO DOS LAGOS </h3><br>
-                        <br>
+                  <br><h3>ASSOCIAÇÃO DE AIRSOFT DA REGIAO DOS LAGOS </h3>
+                    <div class="flex justify-center pt-8 sm:pt-0">
+                        <h5>Lista de Espera para Jogos</h5>
+                        <br></div><br>
 
                  <div class="flex justify-center pt-8  sm:pt-0">
  @auth
-                        <a href="{{ url('/dashboard') }}" class="btn btn-primary">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" class="btn btn-primary">Início</a>
                     @else
                         <a href="{{ route('login') }}"  class="btn btn-success btn-lg">
                             <span class="material-icons" style="color:white;font-size:20px">

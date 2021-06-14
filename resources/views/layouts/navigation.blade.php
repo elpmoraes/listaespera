@@ -22,6 +22,12 @@ dashboard
 
           {{ __('Início') }}
                     </x-nav-link>
+                     <x-nav-link :href="route('compendio')" target="_blank" :active="request()->routeIs('compendio')">
+ <span class="material-icons">
+description
+</span>
+                       {{ __('Compêndio') }}
+                    </x-nav-link>
                      <x-nav-link :href="route('usuario.show', Auth::user()->id)" :active="request()->routeIs('usuario')">
  <span class="material-icons">
 account_box

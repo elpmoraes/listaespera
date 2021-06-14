@@ -26,6 +26,7 @@ class ListaJogo extends Model
         'inscritos',
         'maxinscritos',
         'dataabertura',
+        'datafechamento',
         'listavisivel',
         'codlista',
         'ativo'

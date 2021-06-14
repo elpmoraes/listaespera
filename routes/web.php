@@ -59,5 +59,9 @@ Route::get('/listajogos/cancelar/{idLista}', [ListaJogoController::class, 'cance
 Route::post('/gerarSenha/{id}', [UserController::class, 'gerarSenha'])->name('gerarSenha');
 Route::get('/usuario/alterarstatus/{idUser}', [UserController::class, 'ativarDesativar'])->name('ativarDesativar');
 
+Route::get('/compendio', function () {
+
+    return view('compendio');
+})->name('compendio');
 
 require __DIR__.'/auth.php';

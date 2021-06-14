@@ -125,7 +125,8 @@ class UserController extends Controller
         $user->save();
         return view('user.meusdados', [
             'user' => User::findOrFail($id)
-        ]);
+        ])->withErrors('Alteração realizada com sucesso.');
+;
                 }else{
 
                 abort(403);
@@ -146,7 +147,7 @@ class UserController extends Controller
         $user->save();
         return view('user.meusdados', [
             'user' => User::findOrFail($id)
-        ]);
+        ])->withErrors('Senha alterada com sucesso.');;
                 }else{
 
                 abort(403);

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
    <link href = "https://fonts.googleapis.com/icon?family=Material+Icons" rel = "stylesheet">
 
-        <title>AARL</title>
+        <title>Compêndio AARL</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -23,52 +23,6 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:pt-0">
-                    <img src="{{URL::asset('/img/logo.jpg')}}" alt="profile Pic" height="200" width="200">
-
-
-
-
-                </div>
-                  <br><h3>ASSOCIAÇÃO DE AIRSOFT DA REGIAO DOS LAGOS </h3>
-                    <div class="flex justify-center pt-8 sm:pt-0">
-                        <h5>Lista de Espera para Jogos</h5>
-                        <br></div><br>
-
-                 <div class="flex justify-center pt-8  sm:pt-0 mx-auto">
- @auth
-
-                          <a href="{{ url('/dashboard')  }}"  class="btn btn-success btn-lg">
-                          <span class="material-icons" style="color:white;font-size:20px">
-login
-</span>
-   <span style="color:white;font-size:30px">Início</span>
-                        </a>
-                    @else
-                        <a href="{{ route('login') }}"  class="btn btn-success btn-lg">
-                            <span class="material-icons" style="color:white;font-size:20px">
-login
-</span>
-   <span style="color:white;font-size:30px">Login</span></a>
-
-
-                    @endauth
-                          <a href="{{ route('compendio') }}" target="_blank" class="btn btn-success btn-lg ml-2">
-                            <span class="material-icons" style="color:white;font-size:20px">
-description
-</span>
-           <span style="color:white;font-size:30px">Compêndio</span></a>
-
-                 </div>
-    <div class="flex justify-center pt-8  sm:pt-0">
-
-    </div>
-
-            </div>
-
-        </div>
+Compendio AARL
     </body>
 </html>

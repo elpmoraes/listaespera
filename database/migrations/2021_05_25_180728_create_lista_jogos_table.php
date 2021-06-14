@@ -22,7 +22,8 @@ class CreateListaJogosTable extends Migration
             $table->string('gmaps')->nullable();
             $table->integer('inscritos')->default(0);
             $table->integer('maxinscritos');
-            $table->datetime('dataabertura');
+            $table->datetime('dataabertura')->default(now());
+            $table->datetime('datafechamento')->default(now()->next('Friday')->next('20:00'));
             $table->string('listavisivel')->default('S');
             $table->string('codlista');
             $table->string('ativo')->default('S');

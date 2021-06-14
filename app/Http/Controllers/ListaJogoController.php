@@ -19,6 +19,8 @@ class ListaJogoController extends Controller
      */
       protected $listaJogo;
 
+
+
     public function index()
     {
              if (! Gate::allows('admin')) {
@@ -169,7 +171,9 @@ if (!$listaJogo) {
 $listaJogo = ListaJogo::find($idLista);
 
    $msg = '';
+
    if($listaJogo->ativo == 'S'){
+       if($listaJogo->datafechamento > now()){
    if($listaJogo->inscritos < $listaJogo->maxinscritos){
         $listaJogo->inscritos++;
 
@@ -194,19 +198,20 @@ $listaJogo = ListaJogo::find($idLista);
    // user found
            $listaJogo->save();
             $inscricao->save();
-       $msg = "Inscrição realizada com sucesso!";
-        }else{
+             $msg = "Inscrição realizada com sucesso!";
+            }else
             $msg = "Você já se inscreveu nessa lista!";
-    }
 
 
 
-}else{
-    $msg = "Desculpe, a lista já está cheia.";
-}
-   }else{
+
+        }else
+            $msg = "Desculpe, a lista já está cheia.";
+    }else
+     $msg = "Horário encerrado para as inscrições. Data Limite era até ".date( "d/m/Y h:i", strtotime( $listaJogo->datafechamento )).'.';
+   }else
         $msg = "Desculpe, essa lista está cancelada.";
-   }
+
 
 
 return Redirect::route('exibirLista',$idLista)->withErrors([$msg]);
@@ -228,6 +233,8 @@ return Redirect::route('exibirLista',$idLista)->withErrors([$msg]);
                     $idUser = Auth::user()->id;
                 }
 
+  if($listaJogo->datafechamento > now() || Gate::allows('admin')){
+
                  $inscricao = user_list::where('id_users', $idUser)->where('id_lista',$idLista);
 
 
@@ -239,6 +246,8 @@ return Redirect::route('exibirLista',$idLista)->withErrors([$msg]);
 
     }
 
+  }else
+    $msg = "Ops.. A lista fechou em ".date( "d/m/Y h:i", strtotime( $listaJogo->datafechamento )).". Contate um Administrador para se retirar da lista.";
 
 return Redirect::route('exibirLista',$idLista)->withErrors([$msg]);
 

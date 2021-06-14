@@ -34,7 +34,7 @@ Lista de jogos
 @foreach ($listasJogos as $listaJogo)
 <tr>
 <td>{{ $listaJogo->descricao }}</td>
-<td>{{ $listaJogo->datahora }}</td>
+<td>{{ \Carbon\Carbon::parse($listaJogo->datahora)->format('d/M/Y h:i') }}</td>
 <td>{{ $listaJogo->cidade }}</td>
 <td>{{ $listaJogo->inscritos }} / {{ $listaJogo->maxinscritos }}</td>
 <td>{{ $listaJogo->codlista }}</td>

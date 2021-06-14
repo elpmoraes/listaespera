@@ -21,7 +21,7 @@
 <h4>Dados do Jogo</h4>
                                 <div class="mb-7">
 Descricao <input type="text" class="form-control" disabled name="descricao" id="descricao" value="{{ $listaJogo->descricao }}">
-Data do Jogo <input type="text" class="form-control" disabled name="datahora" id="datahora" value="{{ $listaJogo->datahora }}">
+Data do Jogo <input type="text" class="form-control" disabled name="datahora" id="datahora" value="{{ \Carbon\Carbon::parse($listaJogo->datahora)->format('d/M/Y h:i') }}">
 Endereço <input type="text" class="form-control"   disabled name="endereco" id="endereco" value="{{ $listaJogo->endereco }}">
 
 Cidade <input type="text" class="form-control"   disabled name="cidade" id="cidade" value="{{ $listaJogo->cidade }}">
@@ -71,7 +71,7 @@ Código da Lista
 <tr>
 <td>{{ $user_list->user[0]->name }}</td>
 <td>{{ $user_list->user[0]->equipe }}</td>
-<td>{{ $user_list->datainscricao }}</td>
+<td>{{ \Carbon\Carbon::parse($user_list->datainscricao)->format('d/M/Y h:i')  }}</td>
  @if($user_list->fardamento=='S')
 <td><span class="material-icons" style="font-size:2em;color:rgb(30, 175, 30)">
 done

@@ -52,9 +52,17 @@ Lista de Inscritos
 <tr>
 <td>{{ $user_list->user[0]->name }}</td>
 <td>{{ $user_list->user[0]->equipe }}</td>
-<td>{{ $user_list->datainscricao }}</td>
+<td>{{ \Carbon\Carbon::parse($user_list->datainscricao)->format('d/M/Y h:i') }}</td>
 <td>{{ $user_list->ip }}</td>
-<td>{{ $user_list->fardamento }}</td>
+ @if($user_list->fardamento=='S')
+<td><span class="material-icons" style="font-size:2em;color:rgb(30, 175, 30)">
+done
+</span></td>
+@else
+    <td><span class="material-icons" style="font-size:2em;color:rgba(107, 3, 3, 0.513)">
+dangerous
+</span></td>
+        @endif
 <td>{{ $user_list->classe }}</td>
 <td><a href="/removerinscricao/{{ $listaJogo->id }}/{{ $user_list->user[0]->id }}" class="btn btn-info" role="button">Remover da lista</a>
 </td>
